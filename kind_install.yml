@@ -1,0 +1,13 @@
+# kubectlおよびkindをインストールします。
+# docker_install.ymlなどでdockerがインストールされていることが前提です。
+
+- hosts: node # 対象ホストを指定する。
+  tasks: # 実行するtaskを指定する。
+    - name: kubectlのインストール
+      shell: curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+    - name: kubectlのパスを通す
+      shell: chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
+    - name: kindのダウンロード
+      shell: curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.14.0/kind-linux-amd64
+    - name: kindのパスを通す
+      shell: chmod +x ./kind && sudo mv ./kind /usr/local/bin/kind

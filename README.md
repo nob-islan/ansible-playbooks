@@ -1,2 +1,3 @@
 # ansible-playbooks
-for ansible playbooks repository
+
+ansible のプレイブックを管理するリポジトリです。
